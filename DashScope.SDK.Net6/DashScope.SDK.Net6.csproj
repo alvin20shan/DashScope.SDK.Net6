@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>DashScope.SDK.Net6</PackageId>
+    <RootNamespace>DashScope.SDK.Net6</RootNamespace>
+    <Title>DashScope.SDK.Net6</Title>
+    <PackageTags>DashScope.SDK.Net6,通义千问</PackageTags>
+    <Description>DashScope(通义千问) .NET6 SDK</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.9</Version>
+    <Authors>Alvin</Authors>
+    <Company>CE</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="QwenModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>
