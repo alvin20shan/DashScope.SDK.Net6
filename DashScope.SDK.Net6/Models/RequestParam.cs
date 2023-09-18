@@ -8,8 +8,7 @@ namespace DashScope.SDK.Net6.Models
 {
     public abstract class RequestParam:RequestBaseParam
     { 
-        public Dictionary<string, object>? Parameters { get; set; }=new Dictionary<string, object>();
-
+        public Dictionary<string, object>? Parameters { get; set; }=new Dictionary<string, object>(); 
 
         public bool IsSSE { get; set; }= false;
          
