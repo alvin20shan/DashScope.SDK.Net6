@@ -33,20 +33,21 @@ namespace DashScope.SDK.Net6.Models
 
         public string ResultFormat { get; set; } = ResultFormatType.TEXT;
 
-        private Dictionary<string, object> Input
+        public virtual Dictionary<string, object> Input
         {
 
             get
             {
                 Dictionary<string, object> dictionary = new Dictionary<string, object>()
                 {
-                    {
-                       FieldKeyNames.PROMPT, Prompt
-                    }
-                };
 
-                if (Messages != null && Messages.Any())
+                };
+                if (ResultFormat == ResultFormatType.MESSAGE)
                 {
+                    if (Messages == null)
+                    {
+                        Messages = new List<Message>();
+                    }
                     if (!string.IsNullOrEmpty(this.Prompt))
                     {
                         var msg = new Message { Content = Prompt, Role = Role.User };
@@ -65,18 +66,14 @@ namespace DashScope.SDK.Net6.Models
                     }
                     dictionary.Add(FieldKeyNames.MESSAGES, Messages);
                 }
-                else
+
+                if (ResultFormat == ResultFormatType.TEXT)
                 {
-                    if (Messages == null)
+                    dictionary.Add(FieldKeyNames.PROMPT, Prompt);
+                    if (History != null && History.Any())
                     {
-                        Messages = new List<Message>();
-                        Messages.Add(Message);
-                        dictionary.Add(FieldKeyNames.MESSAGES, Messages);
+                        dictionary.Add(FieldKeyNames.HISTORY, History);
                     }
-                }
-                if (History != null && History.Any())
-                {
-                    dictionary.Add(FieldKeyNames.HISTORY, History);
                 }
 
                 return dictionary;

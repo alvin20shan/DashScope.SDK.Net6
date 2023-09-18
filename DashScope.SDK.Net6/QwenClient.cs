@@ -58,10 +58,7 @@ namespace DashScope.SDK.Net6
 
             requestParam = requestParam.BuildParam();
 
-            if (isMultipleConversation)
-            {
-
-            }
+         
 
             var httprequest = requestParam.GetHttpRequestMessage(_apiKey, HttpMethod.Post, Defaults.Endpoint(endpoint));
 

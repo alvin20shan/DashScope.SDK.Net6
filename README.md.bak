@@ -44,4 +44,8 @@
 	Console.WriteLine(mulns);
 	
 	Console.ReadLine();
+
+
  ![image](https://github.com/alvin20shan/DashScope.SDK.Net6/assets/65529357/dff2742b-201b-4374-9fb8-6049b7e0192b)
+
+
