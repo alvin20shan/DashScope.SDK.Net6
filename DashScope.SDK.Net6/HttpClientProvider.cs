@@ -8,7 +8,7 @@ namespace DashScope.SDK.Net6
 {
     public class HttpClientProvider
     {
-     
+
         public static HttpClient CreateClient()
         {
             return new HttpClient();

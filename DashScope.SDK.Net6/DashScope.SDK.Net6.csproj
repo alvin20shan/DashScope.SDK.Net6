@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="QwenModels\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 
   <ItemGroup>

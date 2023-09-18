@@ -10,21 +10,21 @@ namespace DashScope.SDK.Net6.Models
 {
     public class RequestBody
     {
-        [JsonPropertyName("model")]
+        [JsonProperty("model")]
         public string Model { get; set; }
-        [JsonPropertyName("input")]
+        [JsonProperty("input")]
         public Input Input { get; set; }
 
-        [JsonPropertyName("parameters")]
+        [JsonProperty("parameters")]
         public Parameters Parameters { get; set; }
     }
 
     public class Input
     {
-        [JsonPropertyName("messages")]
+        [JsonProperty("messages")]
         public List<Message> Messages { get; set; } = new List<Message>();
 
-        [JsonPropertyName("prompt")]
+        [JsonProperty("prompt")]
         public string Prompt { get; set; }
     }
 

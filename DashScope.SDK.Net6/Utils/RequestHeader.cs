@@ -14,8 +14,7 @@ namespace DashScope.SDK.Net6
         {
             Dictionary<string, string> dictionary = new Dictionary<string, string>();
             dictionary.Add("Authorization", "Bearer " + apiKey);
-
-  
+ 
 
             dictionary.Add("Content-Type", "application/json");
             if (isSSE)
