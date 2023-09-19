@@ -19,7 +19,17 @@
    	     return JsonConvert.SerializeObject(result);
 	}
 
+
+
 	#多伦对话
+        var allqwenParam = new DashScope.SDK.Net6.QwenModels.QwenParam()
+	{
+	    Model = ModelNames.QWEN_V1,
+	    TopP = 0.8
+	};
+ 
+	var allqwenClient = new QwenClient("apikey");
+ 
 	string CallMulti(string msg)
 	{
 
@@ -31,12 +41,7 @@
 	}
 
    	
-	var allqwenParam = new DashScope.SDK.Net6.QwenModels.QwenParam()
-	{
-	    Model = ModelNames.QWEN_V1,
-	    TopP = 0.8
-	};
-	var allqwenClient = new QwenClient("apikey");
+	
 	
 	 
 	var mulns = CallMulti("今天广州天气如何？");
