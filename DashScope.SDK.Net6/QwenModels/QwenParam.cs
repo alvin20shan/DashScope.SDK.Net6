@@ -42,7 +42,7 @@ namespace DashScope.SDK.Net6.QwenModels
             }
             if (!base.Parameters.ContainsKey(FieldKeyNames.RESULTFORMAT))
             {
-                Parameters.Add(FieldKeyNames.RESULTFORMAT, ResultFormat);
+                Parameters.Add(FieldKeyNames.RESULTFORMAT,base.ResultFormat);
             }
             return this;
         }
