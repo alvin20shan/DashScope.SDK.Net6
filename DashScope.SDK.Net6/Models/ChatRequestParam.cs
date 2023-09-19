@@ -16,11 +16,11 @@ namespace DashScope.SDK.Net6.Models
         /// 用户当前输入的期望模型执行指令，支持中英文。qwen-v1 prompt字段支持 1.5k Tokens 长度； qwen-plus-v1 prompt字段支持 6.5k Tokens 长度
         /// 使用Message格式时，也可以用此字段，但是输入会将该字段清空，内容会添加到Messages里面
         /// </summary>
-        public string Prompt { get; set; } = null;
+        public string? Prompt { get; set; } = null;
         /// <summary>
         /// 使用Message格式时,Prompt字段无内容，则对象不能为空
         /// </summary>
-        public Message Message { get; set; }
+        public Message? Message { get; set; }
         /// <summary>
         /// 用户与模型的对话历史，list中的每个元素是形式为{Role.User:"用户输入","bot":"模型输出"}的一轮对话，多轮对话按时间正序排列。
         /// </summary>
@@ -103,7 +103,7 @@ namespace DashScope.SDK.Net6.Models
                     this.History.Add(new History
                     {
                         User = this.Prompt,
-                        Bot = output!.Output!.Text
+                        Bot = output!.Output!.Text!
                     });
                 }
             }
@@ -121,7 +121,7 @@ namespace DashScope.SDK.Net6.Models
 
                 if (output != null)
                 {
-                    foreach (var item in output!.Output!.Choices)
+                    foreach (var item in output!.Output!.Choices!)
                     {
                         Message message1 = new Message
                         {

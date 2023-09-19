@@ -24,19 +24,19 @@ namespace DashScope.SDK.Net6.QwenModels
         {
             if (TopP > 0) 
             {
-                if (!base.Parameters.ContainsKey(FieldKeyNames.TOP_P))
+                if (!base.Parameters!.ContainsKey(FieldKeyNames.TOP_P))
                 {
                     base.Parameters.Add(FieldKeyNames.TOP_P, TopP);
                 }
             }
             if (TopK > 0)
             {
-                if (!base.Parameters.ContainsKey(FieldKeyNames.TOP_K))
+                if (!base.Parameters!.ContainsKey(FieldKeyNames.TOP_K))
                 {
                     base.Parameters.Add(FieldKeyNames.TOP_K, TopK);
                 }
             }
-            if (!base.Parameters.ContainsKey(FieldKeyNames.ENABLESEARCH))
+            if (!base.Parameters!.ContainsKey(FieldKeyNames.ENABLESEARCH))
             {
                 Parameters.Add(FieldKeyNames.ENABLESEARCH, EnableSearch);
             }

@@ -11,6 +11,6 @@ namespace DashScope.SDK.Net6.Models
         /// <summary>
         /// 指明需要调用的模型
         /// </summary>
-        public string Model { get; set; } = null;
+        public string? Model { get; set; } = null;
     }
 }

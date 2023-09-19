@@ -10,9 +10,9 @@ namespace DashScope.SDK.Net6.Models
     public class History
     {
         [JsonProperty("user")]
-        public string User { get; set; }
+        public string? User { get; set; }
 
         [JsonProperty("bot")]
-        public string Bot { get; set; }
+        public string? Bot { get; set; }
     }
 }

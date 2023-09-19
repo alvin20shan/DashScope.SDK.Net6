@@ -11,9 +11,9 @@ namespace DashScope.SDK.Net6.Models
     public class RequestBody
     {
         [JsonProperty("model")]
-        public string Model { get; set; }
+        public string? Model { get; set; }
         [JsonProperty("input")]
-        public Input Input { get; set; }
+        public Input? Input { get; set; }
 
         [JsonProperty("parameters")]
         public Parameters Parameters { get; set; }
@@ -25,7 +25,7 @@ namespace DashScope.SDK.Net6.Models
         public List<Message> Messages { get; set; } = new List<Message>();
 
         [JsonProperty("prompt")]
-        public string Prompt { get; set; }
+        public string? Prompt { get; set; }
     }
 
     public class Parameters
