@@ -9,6 +9,7 @@ namespace APITest.Controllers
     [Route("api")]
     [ApiController]
     [EnableCors("DashScopeAPI")]
+    [ApiExplorerSettings(GroupName =nameof(ApiVersionInfo.V1))]
     public class DashScopeAPI : ControllerBase
     {
         private readonly QwenClient _qwenClient;

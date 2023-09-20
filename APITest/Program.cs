@@ -1,5 +1,8 @@
+using APITest;
 using DashScope.SDK.Net6;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +14,16 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(option => {
-    option.SwaggerDoc("v1", new OpenApiInfo { Title = "≤‚ ‘Api", Version = "v1", Description = "APIŒƒµµµƒ√Ë ˆ" }); 
+    foreach (FieldInfo fileld in typeof(ApiVersionInfo).GetFields())
+    {
+        option.SwaggerDoc(fileld.Name, new OpenApiInfo { Title = "≤‚ ‘Api", Version = fileld.Name, Description = $"API{fileld.Name}Œƒµµµƒ√Ë ˆ" });
+    }
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    option.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 builder.Services.AddCors(options =>
 {
+
     options.AddPolicy("DashScopeAPI",
         builder =>
         {
@@ -37,11 +46,16 @@ if (app.Environment.IsDevelopment())
    
 }
 app.UseSwagger();
-app.UseSwaggerUI(c => {
-
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "≤‚ ‘API");
-    c.RoutePrefix = "";
-});
+app.UseSwaggerUI(
+    c =>
+    {
+        foreach (FieldInfo field in typeof(ApiVersionInfo).GetFields())
+        {
+            c.SwaggerEndpoint($"/swagger/{field.Name}/swagger.json", $"{field.Name}");
+        }
+        //c.SwaggerEndpoint("/swagger/v1/swagger.json", "≤‚ ‘API"); 
+    }
+    );
 
 app.UseHttpsRedirection();
 app.UseCors("DashScopeAPI");
