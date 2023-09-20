@@ -24,6 +24,7 @@
 	{
 
     	    allqwenParam.Prompt = msg;
+	        //allqwenParam.Message = new DashScope.SDK.Net6.Models.Message() { Role = Role.User, Content = msg }; //Message格式 多轮对话 第二种方式 
     	    var result = allqwenClient.QwenCallAsync(allqwenParam, new QwenEndpoint(),true).Result;
 
     	    return JsonConvert.SerializeObject(result);

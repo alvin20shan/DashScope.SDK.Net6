@@ -50,3 +50,6 @@
  ![image](https://github.com/alvin20shan/DashScope.SDK.Net6/assets/65529357/dff2742b-201b-4374-9fb8-6049b7e0192b)
 
 
+#捐赠
+
+![6399157acde79468cb5dda7c330d6ed](https://github.com/alvin20shan/DashScope.SDK.Net6/assets/65529357/a55b47eb-406b-436e-88bf-ce7beebfa321)
