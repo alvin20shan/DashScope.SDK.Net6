@@ -17,5 +17,11 @@ namespace DashScope.SDK.Net6.Utils
         public static readonly string QWEN_PLUS_V1 = "qwen-plus-v1";
 
         public static readonly string BAICHUAN = "baichuan-7b-v1";
+
+        public static readonly string QWEN_TURBO = "qwen-turbo";
+
+
+        public static readonly string QWEN_PLUS = "qwen-plus";
+
     }
 }

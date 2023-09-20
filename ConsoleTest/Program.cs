@@ -7,7 +7,7 @@ Console.WriteLine("Hello, World!");
 
 var allqwenParam = new DashScope.SDK.Net6.QwenModels.QwenParam()
 {
-    Model = ModelNames.QWEN_V1,
+    Model = ModelNames.QWEN_PLUS,
     TopP = 0.8
 };
 var allqwenClient = new QwenClient("apikey");
@@ -24,9 +24,12 @@ string CallMulti(string msg)
 }
 
 
-
-
-var mulns = CallMulti("今天广州天气如何？");
+//单轮
+var single = CallQwen("广州最长的桥是哪个？");
+Console.WriteLine(single);
+Console.ReadLine();
+//多轮
+var mulns = CallMulti("广州最高的建筑是哪个？");
 Console.WriteLine(mulns);
 mulns = CallMulti("我上一个问题是什么？");
 Console.WriteLine(mulns);
@@ -39,7 +42,7 @@ string CallQwen(string msg)
     QwenClient qwenClient = new QwenClient("apikey");
     var param = new DashScope.SDK.Net6.QwenModels.QwenParam()
     {
-        Model = ModelNames.QWEN_V1,
+        Model = ModelNames.QWEN_PLUS,
         Prompt = msg,
         TopP = 0.8
     };
