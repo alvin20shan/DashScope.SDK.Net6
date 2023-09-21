@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
         {
             builder.SetIsOriginAllowed(d => true).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
         });
-});
+0});
 
 
 builder.Services.AddScoped(d =>

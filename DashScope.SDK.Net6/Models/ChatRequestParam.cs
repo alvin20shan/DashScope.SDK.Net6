@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -38,10 +39,7 @@ namespace DashScope.SDK.Net6.Models
 
             get
             {
-                Dictionary<string, object> dictionary = new Dictionary<string, object>()
-                {
-
-                };
+                Dictionary<string, object> dictionary = new Dictionary<string, object>();
                 if (ResultFormat == ResultFormatType.MESSAGE)
                 {
                     if (Messages == null)
@@ -69,7 +67,7 @@ namespace DashScope.SDK.Net6.Models
 
                 if (ResultFormat == ResultFormatType.TEXT)
                 {
-                    dictionary.Add(FieldKeyNames.PROMPT, Prompt);
+                    dictionary.Add(FieldKeyNames.PROMPT, this.Prompt!);
                     if (History != null && History.Any())
                     {
                         dictionary.Add(FieldKeyNames.HISTORY, History);
@@ -88,7 +86,7 @@ namespace DashScope.SDK.Net6.Models
         /// <param name="outputtext">本轮会话结果</param>
         /// <param name="message">本轮会话信息</param>
         /// <returns></returns>
-        public ChatRequestParam BuildHistory(ApiOutputResult output)
+        public virtual ChatRequestParam BuildHistory(ApiOutputResult output)
         {
 
             if (this.ResultFormat == ResultFormatType.TEXT)
@@ -114,7 +112,7 @@ namespace DashScope.SDK.Net6.Models
                     this.Messages = new List<Message>();
                     if (!string.IsNullOrEmpty(this.Prompt))
                     {
-                        this.Messages.Add(new Message { Content = Prompt, Role = Role.User });
+                        this.Messages.Add(new Message { Content = this.Prompt, Role = Role.User });
                     }
                 }
 
@@ -140,7 +138,7 @@ namespace DashScope.SDK.Net6.Models
 
 
             Dictionary<string, object> dictionary = new Dictionary<string, object>();
-            dictionary.Add(FieldKeyNames.MODEL, base.Model);
+            dictionary.Add(FieldKeyNames.MODEL, base.Model!);
             dictionary.Add(FieldKeyNames.INPUT, Input);
             if (base.Parameters != null && base.Parameters.Any())
             {
@@ -199,7 +197,7 @@ namespace DashScope.SDK.Net6.Models
 
         public override bool Verify()
         {
-            if (string.IsNullOrEmpty(Prompt) && Message == null && (History == null || !History.Any()) && (Messages == null || !Messages.Any()))
+            if (string.IsNullOrEmpty(base.Model) && string.IsNullOrEmpty(Prompt) && Message == null && (History == null || !History.Any()) && (Messages == null || !Messages.Any()))
             {
                 return false;
             }
